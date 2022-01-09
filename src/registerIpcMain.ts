@@ -1,5 +1,5 @@
 import {ipcMain,dialog} from "electron"
-
+import dirTree  from "directory-tree"
 
 /**
  * 
@@ -20,6 +20,15 @@ async function openFolderDialog(){
 }
 
 
+function parseFolderStructure(event:any,rootDirPath:string){
+    const tree=dirTree (rootDirPath,{
+        attributes:["type"]
+    })
+    return tree;
+}
+
+
 export function registerIpcMain(){
     ipcMain.handle("openFolderDialog",openFolderDialog)
+    ipcMain.handle("parseFolderStructure",parseFolderStructure)
 }

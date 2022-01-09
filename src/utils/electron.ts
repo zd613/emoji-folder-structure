@@ -8,4 +8,7 @@ export class ElectronApi{
         return (window as any).electron.openFolderDialog()
     }
     
+    public static parseFolderStructure(dirPath:string){
+        return (window as any).electron.parseFolderStructure(dirPath)
+    }
 }
