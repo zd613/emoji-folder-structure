@@ -1,11 +1,8 @@
 <template>
   <div>
-    <button type="button" @click="open">ルートフォルダー選択</button>
+    <FolderSelectArea @click="open">ルートフォルダー選択</FolderSelectArea>
     {{ selectedPath }}
 
-    <div>
-      {{ tree }}
-    </div>
     <div>
       <div>result</div>
       <pre style="text-align: left">{{ result }}</pre>
@@ -16,6 +13,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { ElectronApi } from "@/utils/electron";
+import FolderSelectArea from "@/components/FolderSelectArea.vue";
 
 // function convertTreeToEmojiFolderTextRecursive(tree:any,depth:number){
 
