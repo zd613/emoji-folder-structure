@@ -5,7 +5,7 @@
 
     <div>
       <div>result</div>
-      <pre style="text-align: left">{{ result }}</pre>
+      <EmojiFolderStructureTextArea :text="result" />
     </div>
   </div>
 </template>
@@ -14,6 +14,7 @@
 import { ref } from "vue";
 import { ElectronApi } from "@/utils/electron";
 import FolderSelectArea from "@/components/FolderSelectArea.vue";
+import EmojiFolderStructureTextArea from "@/components/EmojiFolderStructureTextArea.vue";
 
 // function convertTreeToEmojiFolderTextRecursive(tree:any,depth:number){
 
