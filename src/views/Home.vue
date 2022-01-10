@@ -60,6 +60,11 @@ const open = async () => {
   console.log(path);
   selectedPath.value = path;
 
+  // キャンセルされた
+  if (path === "") {
+    return;
+  }
+
   const dirTree = await ElectronApi.parseFolderStructure(path);
   tree.value = dirTree;
   console.log(tree);
