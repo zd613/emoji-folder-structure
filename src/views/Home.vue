@@ -1,10 +1,10 @@
 <template>
   <div>
     <FolderSelectArea @click="open">ルートフォルダー選択</FolderSelectArea>
-    {{ selectedPath }}
+
+    <div>選択フォルダー: {{ selectedPath }}</div>
 
     <div>
-      <div>result</div>
       <EmojiFolderStructureTextArea :text="result" />
     </div>
   </div>
