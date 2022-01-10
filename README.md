@@ -1,9 +1,28 @@
 # emoji-folder-structure
 
+## 概要
+
+フォルダーの構造を絵文字付きテキストに変換するためのソフトです。
+
+windowsでのみ動きます.
+
+開発
+
+```
+npm run electron:serve
+```
+
+ビルド
+
+```
+npm run electron:build
+```
+
 ## Project setup
 ```
 npm install
 ```
+
 
 ### Compiles and hot-reloads for development
 ```
