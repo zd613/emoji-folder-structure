@@ -1,10 +1,10 @@
 "use strict";
 
-import { app, protocol, BrowserWindow ,ipcMain} from "electron";
+import { app, protocol, BrowserWindow, Menu, dialog } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import { registerIpcMain } from "./registerIpcMain";
-import path from "path"
+import path from "path";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // Scheme must be registered before the app is ready
@@ -24,7 +24,7 @@ async function createWindow() {
         .ELECTRON_NODE_INTEGRATION as unknown as boolean,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
 
-      preload:path.join(__dirname,'preload.js')
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
@@ -38,7 +38,47 @@ async function createWindow() {
     win.loadURL("app://./index.html");
   }
 }
+const isMac = process.platform === "darwin";
+const template: any = [
+  {
+    label: "ファイル",
+    submenu: [isMac ? { role: "close" } : { role: "quit", label: "終了" }],
+  },
+  {
+    label: "ウィンドウ",
+    submenu: [
+      { role: "minimize", label: "最小化" },
+      { role: "zoom", label: "ズーム" },
+      ...(isMac
+        ? [
+            { type: "separator" },
+            { role: "front" },
+            { type: "separator" },
+            { role: "window" },
+          ]
+        : [{ role: "close", label: "閉じる" }]),
+    ],
+  },
+  {
+    label: "ヘルプ",
+    submenu: [
+      {
+        label: "バージョン",
+        click: () => {
+          dialog.showMessageBoxSync({
+            message: `バージョン: ${process.env.npm_package_version}`,
+            type: "info",
+            title: "バージョン",
+          });
+        },
+      },
+    ],
+  },
+];
+console.log(process.env.npm_package_version);
 
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
 registerIpcMain();
 
 // Quit when all windows are closed.
