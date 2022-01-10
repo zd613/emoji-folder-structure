@@ -49,6 +49,7 @@ const template: any = [
     submenu: [
       { role: "minimize", label: "最小化" },
       { role: "zoom", label: "ズーム" },
+      { role: "reload", label: "リロード" },
       ...(isMac
         ? [
             { type: "separator" },
