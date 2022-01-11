@@ -23,7 +23,7 @@ jobs:
       - name: Make zip
         run: 7z a emoji-folder-structure.zip dist_electron -r
       - name: ls
-        run: ls -l
+        run: ls
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
