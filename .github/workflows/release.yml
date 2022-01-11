@@ -27,4 +27,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
-          files: emoji-folder-structure.zip
+          files: dist_electron/emoji-folder-structure.zip
