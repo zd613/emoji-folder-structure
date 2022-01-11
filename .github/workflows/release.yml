@@ -21,7 +21,7 @@ jobs:
       - name: Build 
         run: npm run electron:build -- -p always
       - name: Make zip
-        run: zip emoji-folder-structure.zip  -r dist_electron
+        run: 7z a emoji-folder-structure.zip dist_electron -r
       - name: ls
         run: ls -l
       - name: Release
