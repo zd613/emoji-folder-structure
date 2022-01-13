@@ -3,7 +3,9 @@
     <FolderSelectArea @click="open">ルートフォルダー選択</FolderSelectArea>
 
     <div>選択フォルダー: {{ selectedPath }}</div>
-
+    <div>
+      <CopyButton :copy-text="result" />
+    </div>
     <div>
       <EmojiFolderStructureTextArea :text="result" />
     </div>
@@ -15,6 +17,7 @@ import { ref } from "vue";
 import { ElectronApi } from "@/utils/electron";
 import FolderSelectArea from "@/components/FolderSelectArea.vue";
 import EmojiFolderStructureTextArea from "@/components/EmojiFolderStructureTextArea.vue";
+import CopyButton from "@/components/CopyButton.vue";
 
 // function convertTreeToEmojiFolderTextRecursive(tree:any,depth:number){
 
