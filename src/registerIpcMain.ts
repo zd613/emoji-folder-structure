@@ -1,5 +1,6 @@
 import { ipcMain, dialog } from "electron";
-import dirTree from "directory-tree";
+// import dirTree from "directory-tree";
+import * as dree from "dree";
 
 /**
  *
@@ -19,10 +20,17 @@ async function openFolderDialog() {
   return path;
 }
 
-function parseFolderStructure(event: any, rootDirPath: string) {
-  const tree = dirTree(rootDirPath, {
-    attributes: ["type"],
+async function parseFolderStructure(event: any, rootDirPath: string) {
+  // const tree = dirTree(rootDirPath, {
+  //   attributes: ["type"],
+  // });
+  console.log("dree");
+  console.log(dree);
+  console.log(dree.scanAsync);
+  const tree = await dree.scanAsync(rootDirPath, {
+    // TODO?
   });
+  console.log(tree);
   return tree;
 }
 

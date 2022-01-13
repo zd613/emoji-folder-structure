@@ -64,8 +64,32 @@ const open = async () => {
   if (path === "") {
     return;
   }
+  const timeout = (msec: number) => {
+    return new Promise((_, reject) => {
+      setTimeout(() => {
+        reject(new Error("timeout error"));
+      }, msec);
+    });
+  };
 
-  const dirTree = await ElectronApi.parseFolderStructure(path);
+  let dirTree: any;
+  try {
+    dirTree = await Promise.race([
+      ElectronApi.parseFolderStructure(path),
+      timeout(4000),
+    ]);
+  } catch (e: any) {
+    console.error(e);
+    console.log(e.message);
+    if (e.message === "timeout error") {
+      // timeout
+      alert("エラー:タイムアウトしました。");
+      return;
+    }
+    throw e;
+  }
+
+  // const dirTree = await ElectronApi.parseFolderStructure(path);
   tree.value = dirTree;
   console.log(tree);
 
