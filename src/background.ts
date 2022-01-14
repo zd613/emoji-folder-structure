@@ -1,6 +1,13 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, Menu, dialog } from "electron";
+import {
+  app,
+  protocol,
+  BrowserWindow,
+  Menu,
+  dialog,
+  nativeTheme,
+} from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import { registerIpcMain } from "./registerIpcMain";
@@ -81,6 +88,9 @@ console.log(process.env.npm_package_version);
 const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
 registerIpcMain();
+
+// ダークモードoff
+nativeTheme.themeSource = "light";
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
