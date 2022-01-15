@@ -1,4 +1,4 @@
-name: release
+name: release(windows)
 on:
   push:
     branches-ignore:
@@ -22,8 +22,6 @@ jobs:
         run: npm run electron:build -- -p always
       - name: Make zip
         run: cd dist_electron && 7z a emoji-folder-structure.zip *
-      - name: ls
-        run: ls
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 

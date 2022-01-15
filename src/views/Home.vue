@@ -1,14 +1,19 @@
 <template>
   <div>
-    <FolderSelectArea @click="open">ルートフォルダー選択</FolderSelectArea>
+    <div class="mt-4">選択したフォルダーの構造をテキストで表示します。</div>
+    <FolderSelectArea @click="open" class="mt-4"
+      >ルートフォルダー選択</FolderSelectArea
+    >
 
-    <div>選択フォルダー: {{ selectedPath }}</div>
-    <div>
-      <CopyButton :copy-text="result" />
-    </div>
-    <div>
-      <EmojiFolderStructureTextArea :text="result" />
-    </div>
+    <div class="mt-4 flex ml-4">選択フォルダー: {{ selectedPath }}</div>
+    <template v-if="result !== ''">
+      <div class="mt-4">
+        <CopyButton :copy-text="result" />
+      </div>
+      <div class="p-2">
+        <EmojiFolderStructureTextArea :text="result" />
+      </div>
+    </template>
   </div>
 </template>
 
