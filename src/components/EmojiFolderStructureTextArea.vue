@@ -1,6 +1,9 @@
 <template>
   <div>
-    <pre class="text-left bg-gray-100">{{ text }}</pre>
+    <pre
+      class="text-left bg-gray-50 shadow-lg p-2 border-2 border-gray-400 rounded"
+      >{{ text }}</pre
+    >
   </div>
 </template>
 
