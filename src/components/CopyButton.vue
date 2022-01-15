@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="copy-btn p-2 rounded-xl bg-gray-200"
+    class="copy-btn p-2 rounded border-2 border-gray-400 text-gray-800"
     :data-clipboard-text="copyText"
   >
     コピーする
